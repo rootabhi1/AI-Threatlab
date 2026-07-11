@@ -14,6 +14,41 @@ through interactive, animated attack walkthroughs — 20 categories, 45 techniqu
 
 ---
 
+## Screenshots
+
+<!--
+  TODO (add real captures — replace the lines below):
+  1. Take screenshots on your device / browser of:
+     - the home screen (3-step strip + track cards)
+     - a threat detail with the attack lab mid-animation
+     - the defense lab with a control toggled to "secure"
+  2. Save them in a docs/ folder, e.g. docs/home.png, docs/attack.png, docs/defense.png
+  3. Uncomment the lines below (and delete this note).
+  Optional: record a 10–20s screen capture, export as docs/demo.gif, and add it at the top.
+-->
+
+<!-- ![THREATLAB — home](docs/home.png) -->
+<!-- ![Attack lab](docs/attack.png) -->
+<!-- ![Defense lab](docs/defense.png) -->
+
+_Screenshots coming soon — or try the [live demo](https://rootabhi1.github.io/AI-Threatlab/) now._
+
+---
+
+## Start here
+
+New here? A good first path (about 5 minutes):
+
+1. **Open the [live demo](https://rootabhi1.github.io/AI-Threatlab/)** and start with **LLM01 · Prompt Injection** — it's the most familiar attack and the best introduction to how the tool works.
+2. **Read the short "how it works" line, then press ▶ play** in the *Watch it happen* panel. Follow the payload as it travels from user input to a breached response.
+3. **Switch to _defense view_ and toggle a control to "secure,"** then replay — watch the same attack get stopped at the exact stage your control sits.
+4. **Skim the mitigation playbook and the verified real-world case** (e.g. the CVE) to connect the mechanics to something that actually happened.
+5. **Explore from there:** try **Attack chains** to see how vulnerabilities combine, or the **Sandbox** to type your own attacks against a simulated bot.
+
+Prefer breadth first? The two track cards — **LLM Applications** and **Agentic Applications** — give you the full map of 20 categories to browse at your own pace.
+
+---
+
 ## What it does
 
 For each of the 20 categories (10 LLM + 10 Agentic) and all 45 sub-techniques, THREATLAB provides:
