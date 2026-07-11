@@ -379,27 +379,78 @@ function Frameworks({ fw }) {
   );
 }
 
-/* ---------- copy / export ---------- */
-function copyText(txt, setNote) {
-  try {
-    const ta = document.createElement("textarea");
-    ta.value = txt; ta.style.position = "fixed"; ta.style.opacity = "0";
-    document.body.appendChild(ta); ta.select();
-    document.execCommand("copy"); document.body.removeChild(ta);
-    setNote("copied ✓"); setTimeout(() => setNote(""), 1600);
-  } catch { setNote("copy failed"); setTimeout(() => setNote(""), 1600); }
+/* ---------- PDF export (print current sub-technique) ---------- */
+function esc(s) {
+  return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
-function subToMarkdown(item, sub) {
-  const lines = [];
-  lines.push(`# ${item.id} — ${item.title} · ${sub.name}`);
-  lines.push(`\n_${sub.oneLiner}_\n`);
-  lines.push(`**How it works.** ${sub.mechanism}\n`);
-  lines.push(`**Real case.** ${sub.incident.name} (${sub.incident.id}, ${sub.incident.disclosed}, ${sub.incident.by}) — ${sub.incident.real}\n`);
-  lines.push(`**MITRE ATLAS:** ${item.frameworks?.atlas || "—"}`);
-  lines.push(`**NIST AI RMF:** ${item.frameworks?.nist || "—"}\n`);
-  lines.push(`## Mitigation playbook`);
-  sub.playbook.forEach((p, i) => lines.push(`${i + 1}. **${p.title}.** ${p.detail}`));
-  return lines.join("\n");
+function exportSubPDF(item, sub) {
+  const playbook = (sub.playbook || []).map((p, i) =>
+    `<li><b>${esc(p.title)}.</b> ${esc(p.detail)}</li>`).join("");
+  const inc = sub.incident || {};
+  const fw = item.frameworks || {};
+  const html = `<!doctype html><html><head><meta charset="utf-8"><title>${esc(item.id)} — ${esc(sub.name)}</title>
+<style>
+@page{margin:18mm 16mm}
+*{box-sizing:border-box}
+body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#14181f;line-height:1.5;font-size:12pt;margin:0}
+.hd{border-bottom:2px solid #14181f;padding-bottom:10px;margin-bottom:16px}
+.kicker{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10pt;letter-spacing:.06em;color:#5b6478;text-transform:uppercase}
+h1{font-size:20pt;margin:4px 0 2px}
+.oneliner{font-style:italic;color:#3a4250;margin:2px 0 0}
+h2{font-size:12pt;text-transform:uppercase;letter-spacing:.05em;color:#5b6478;border-bottom:1px solid #d7dbe2;padding-bottom:3px;margin:18px 0 8px}
+p{margin:6px 0}
+ol{margin:6px 0;padding-left:20px}
+li{margin:5px 0}
+.box{background:#f4f6f9;border:1px solid #d7dbe2;border-radius:6px;padding:10px 12px;font-size:11pt}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10pt}
+.tag{display:inline-block;background:#eef1f5;border:1px solid #d7dbe2;border-radius:4px;padding:1px 7px;font-family:ui-monospace,monospace;font-size:9.5pt;color:#3a4250}
+.foot{margin-top:24px;padding-top:10px;border-top:1px solid #d7dbe2;font-size:9pt;color:#8a93a6}
+.foot a{color:#0a66c2;text-decoration:none}
+</style></head><body>
+<div class="hd">
+  <div class="kicker">${esc(item.id)} · ${esc(item.title)}</div>
+  <h1>${esc(sub.name)}</h1>
+  <div class="oneliner">${esc(sub.oneLiner || "")}</div>
+</div>
+
+${sub.plain ? `<h2>How it works</h2><p>${esc(sub.plain)}</p>` : ""}
+${sub.example ? `<h2>For example</h2><div class="box">${esc(sub.example)}</div>` : ""}
+${sub.mechanism ? `<h2>Technical detail</h2><p><b>Mechanism.</b> ${esc(sub.mechanism)}</p>` : ""}
+
+${inc.name ? `<h2>Real attack — verified</h2>
+<p><b>${esc(inc.name)}</b> ${inc.id ? `<span class="tag">${esc(inc.id)}</span>` : ""}<br>
+<span class="mono">Disclosed ${esc(inc.disclosed || "—")} · ${esc(inc.by || "")}</span></p>
+<p>${esc(inc.real || "")}</p>` : ""}
+
+${playbook ? `<h2>Mitigation playbook</h2><ol>${playbook}</ol>` : ""}
+
+<h2>Framework mappings</h2>
+<p class="mono"><b>MITRE ATLAS:</b> ${esc(fw.atlas || "—")}<br>
+<b>NIST AI RMF:</b> ${esc(fw.nist || "—")}</p>
+
+<div class="foot">
+  THREATLAB — interactive OWASP LLM &amp; Agentic AI security · reconstruction for teaching; CVEs checked against the NVD.<br>
+  ${esc(item.id)} · ${esc(sub.name)} · exported ${new Date().toISOString().slice(0, 10)} · <a href="https://github.com/rootabhi1/AI-Threatlab">github.com/rootabhi1/AI-Threatlab</a>
+</div>
+</body></html>`;
+
+  try {
+    const w = window.open("", "_blank");
+    if (!w) { // popup blocked — fall back to same-tab iframe print
+      const ifr = document.createElement("iframe");
+      ifr.style.position = "fixed"; ifr.style.right = "0"; ifr.style.bottom = "0";
+      ifr.style.width = "0"; ifr.style.height = "0"; ifr.style.border = "0";
+      document.body.appendChild(ifr);
+      const d = ifr.contentWindow.document;
+      d.open(); d.write(html); d.close();
+      ifr.contentWindow.focus();
+      setTimeout(() => { ifr.contentWindow.print(); setTimeout(() => document.body.removeChild(ifr), 1000); }, 300);
+      return;
+    }
+    w.document.open(); w.document.write(html); w.document.close();
+    w.focus();
+    setTimeout(() => { w.print(); }, 350);
+  } catch (e) { /* no-op */ }
 }
 
 /* ---------- Detail ---------- */
@@ -418,14 +469,7 @@ function Collapsible({ label, accent, children, defaultOpen = false }) {
 
 function Detail({ item, accent, done, onDone, subIndex, setSubIndex, onJump }) {
   const sub = item.subs[subIndex] || item.subs[0];
-  const [note, setNote] = useState("");
   const [lens, setLens] = useState("attacker"); // attacker | defender
-
-  const shareLink = () => {
-    const url = `${window.location.origin}${window.location.pathname}#${item.id}/${subIndex}`;
-    copyText(url, setNote);
-    try { window.history.replaceState(null, "", `#${item.id}/${subIndex}`); } catch {}
-  };
 
   return (
     <div className="detail">
@@ -433,9 +477,7 @@ function Detail({ item, accent, done, onDone, subIndex, setSubIndex, onJump }) {
         <div className="d-top">
           <div className="d-id" style={{ color: accent }}>{item.id}</div>
           <div className="d-actions">
-            <button className="mini" onClick={shareLink} title="Copy deep-link"><Glyph name="link" size={14} /> link</button>
-            <button className="mini" onClick={() => copyText(subToMarkdown(item, sub), setNote)} title="Copy as markdown"><Glyph name="copy" size={14} /> export</button>
-            {note && <span className="mini-note" style={{ color: accent }}>{note}</span>}
+            <button className="mini" onClick={() => exportSubPDF(item, sub)} title="Download this attack as a PDF"><Glyph name="copy" size={14} /> download PDF</button>
           </div>
         </div>
         <h2>{item.title}</h2>
