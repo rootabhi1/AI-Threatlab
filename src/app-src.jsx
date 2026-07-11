@@ -9,6 +9,14 @@ import { IX3B } from "./interactive_batch3b.js";
 import { REALCONFIG } from "./realconfig.js";
 
 /* ---------- icons ---------- */
+function LinkedInIcon() {
+  return (
+    <svg className="li-ico" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true">
+      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+    </svg>
+  );
+}
+
 function Glyph({ name, size = 22 }) {
   const p = { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": true };
   const g = {
@@ -830,7 +838,7 @@ export default function App() {
                 </div>
               </div>
               <div className="honesty-note">
-                <b>Faithful reconstructions of documented techniques</b> — nothing executes live and no real system is attacked. Incidents and CVEs are verified against primary sources.
+                <b>Faithful reconstructions of documented techniques</b> — nothing executes live and no real system is attacked. Incidents and CVEs are verified against primary sources.{" "}
                 <button className="method-btn" onClick={() => setShowMethod(m => !m)}>{showMethod ? "methodology ▾" : "methodology ▸"}</button>
               </div>
               {showMethod && (
@@ -908,7 +916,7 @@ export default function App() {
         <div className="foot-row foot-brand">
           <span className="foot-name">THREAT<span style={{ color: accent }}>LAB</span></span>
           <span className="foot-ver">v1.0</span>
-          <span className="foot-by">created by <a className="foot-link-sm" href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" style={{ color: accent }}>Abhishek Tiwari →</a></span>
+          <span className="foot-by"><a className="foot-linkedin" href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="Abhishek Tiwari on LinkedIn"><LinkedInIcon /> <span>Abhishek Tiwari</span></a></span>
         </div>
         <div className="foot-row foot-stats">
           20 categories · 45 attack techniques · mapped to MITRE ATLAS &amp; NIST AI RMF
@@ -924,7 +932,7 @@ export default function App() {
           Attacks and defenses are reconstructions built to teach — nothing executes live and the sandbox is a labelled simulation. CVE IDs checked against the NVD; entries without a single CVE are labelled documented patterns. Last updated July 2026.
         </div>
         <div className="foot-row foot-legal">
-          <span>© 2026 Abhishek Tiwari · MIT licensed</span>
+          <span><a className="foot-linkedin" href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="Abhishek Tiwari on LinkedIn"><LinkedInIcon /> <span>Abhishek Tiwari</span></a> · © 2026 · MIT licensed</span>
           <span>Found an inaccuracy? <a className="foot-link-sm" href={REPO_URL + "/issues/new"} target="_blank" rel="noopener noreferrer" style={{ color: accent }}>Open an issue</a>.</span>
         </div>
       </footer>
@@ -940,7 +948,7 @@ const CSS = `
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-button{touch-action:manipulation;-webkit-appearance:none;appearance:none}
+button{touch-action:manipulation;-webkit-appearance:none;appearance:none;color:inherit;font-family:inherit}
 input,textarea{-webkit-appearance:none;appearance:none;border-radius:0}
 .hidden-instr{cursor:pointer}
 @supports (min-height:100dvh){.app{min-height:100dvh}}
@@ -948,10 +956,11 @@ input,textarea{-webkit-appearance:none;appearance:none;border-radius:0}
 @media(max-width:640px){.app{padding:12px}}
 .skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:var(--panel);padding:8px 12px;border-radius:8px;z-index:10}
 .top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px}
-.brand{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.brand-mark{font-size:20px}.brand-name{font-size:22px;font-weight:700;letter-spacing:.06em}
+.brand{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;min-width:0}
 .brand-sub{font-size:12px;color:var(--dim2);font-family:"JetBrains Mono",ui-monospace,monospace}
-.prog{display:flex;align-items:center;gap:10px;min-width:170px}
+@media(max-width:560px){.brand-sub{display:none}}
+.brand-mark{font-size:20px}.brand-name{font-size:22px;font-weight:700;letter-spacing:.06em;color:var(--ink)}
+.prog{display:flex;align-items:center;gap:10px;min-width:120px;flex:0 1 200px}
 .prog-num{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--dim);width:36px;text-align:right}
 .prog-bar{flex:1;height:6px;background:#0a0e16;border:1px solid var(--line);border-radius:20px;overflow:hidden}
 .prog-bar span{display:block;height:100%;border-radius:20px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
@@ -1011,7 +1020,7 @@ input,textarea{-webkit-appearance:none;appearance:none;border-radius:0}
 .how-desc{font-size:12.5px;line-height:1.5;color:var(--dim)}
 .honesty-note{font-size:12.5px;line-height:1.55;color:var(--dim);background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:11px 13px;max-width:720px;margin:0 0 8px}
 .honesty-note b{color:var(--ink);font-weight:500}
-.method-btn{font-family:"JetBrains Mono",monospace;font-size:11px;cursor:pointer;background:transparent;border:0;color:var(--accent);padding:6px 0 0;display:inline-flex;align-items:center;gap:5px}
+.method-btn{font-family:"JetBrains Mono",monospace;font-size:11px;cursor:pointer;background:transparent;border:0;color:var(--accent);padding:0;white-space:nowrap;text-decoration:underline;text-underline-offset:2px}
 .method-body{font-size:12.5px;line-height:1.6;color:var(--dim);background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:6px 0 24px;max-width:720px}
 .method-body b{color:var(--ink);font-weight:500}
 .home-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
@@ -1094,12 +1103,12 @@ input,textarea{-webkit-appearance:none;appearance:none;border-radius:0}
 .email-foot{padding:8px 12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
 .reveal-btn{font-family:"JetBrains Mono",monospace;font-size:10.5px;cursor:pointer;background:transparent;border:1px solid var(--line);border-radius:7px;padding:5px 10px;color:var(--dim)}
 .reveal-btn:hover{color:var(--ink);border-color:#2c3648}
-.email-tag{font-family:"JetBrains Mono",monospace;font-size:9.5px;color:var(--dim2)}
+.email-tag{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--dim2)}
 .chatart{display:flex;flex-direction:column;gap:7px}
 .chatline{display:flex;gap:9px;align-items:baseline;background:#0d1420;border:1px solid var(--line);border-radius:9px;padding:9px 11px}
 .chatline.attacker{border-color:#3a1f2c}
 .chatline.system{border-color:#1e2635}
-.chat-who{flex:none;font-family:"JetBrains Mono",monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim2);width:56px}
+.chat-who{flex:none;font-family:"JetBrains Mono",monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim2);width:56px}
 .chatline.attacker .chat-who{color:#ff8fa3}
 .chat-txt{font-size:12.5px;line-height:1.5;color:#d4dae6}
 .chat-note{color:var(--dim2);font-style:italic}
@@ -1113,10 +1122,10 @@ input,textarea{-webkit-appearance:none;appearance:none;border-radius:0}
 .cfg-view{font-family:"JetBrains Mono",monospace;font-size:11px;line-height:1.5;border-radius:8px;padding:8px 10px}
 .cfg-view.ins{background:#160e12;border:1px solid #3a1f2c;color:#ffb3c0}
 .cfg-view.sec{background:#0c1f18;border:1px solid #17402f;color:#bfe9d4}
-.cfg-label{font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;opacity:.7;display:block;margin-bottom:3px}
+.cfg-label{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;opacity:.7;display:block;margin-bottom:3px}
 .reaction{border-top:1px solid var(--line);padding:12px 14px;min-height:92px}
 .rx-idle{color:var(--dim2);font-size:12.5px;font-family:"JetBrains Mono",monospace}
-.rx-badge{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:.1em;padding:3px 8px;border-radius:6px;margin-bottom:8px}
+.rx-badge{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;padding:3px 8px;border-radius:6px;margin-bottom:8px}
 .rx-txt{font-size:12.5px;line-height:1.5;margin-bottom:8px}
 .rx-art{font-family:"JetBrains Mono",monospace;font-size:11px;line-height:1.5;background:#080b12;border:1px solid var(--line);border-left:2px solid #3a4560;border-radius:8px;padding:9px 11px;white-space:pre-wrap;word-break:break-word;color:#cbd5e6}
 .rx-art .hl{color:#ff9db0}
@@ -1133,7 +1142,7 @@ input,textarea{-webkit-appearance:none;appearance:none;border-radius:0}
 .realcfg:last-child{margin-bottom:0}
 .realcfg-label{font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:6px}
 .realcfg-code{position:relative;font-family:"JetBrains Mono",monospace;font-size:11px;line-height:1.55;background:#080b12;border:1px solid var(--line);border-radius:8px;padding:11px 12px 11px;white-space:pre-wrap;word-break:break-word;color:#bfe9d4;overflow-x:auto;margin:0 0 5px}
-.realcfg-lang{position:absolute;top:0;right:0;font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim2);background:var(--panel2);border-left:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0 8px 0 8px;padding:2px 7px}
+.realcfg-lang{position:absolute;top:0;right:0;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim2);background:var(--panel2);border-left:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0 8px 0 8px;padding:2px 7px}
 .realcfg-src{font-size:11px;line-height:1.5;color:var(--dim2);font-style:italic}
 .theater-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 13px;border-bottom:1px solid var(--line);background:#0a0e16;flex-wrap:wrap}
 .app-chip{display:flex;align-items:center;gap:8px}.app-dot{width:8px;height:8px;border-radius:50%}
@@ -1226,7 +1235,7 @@ input,textarea{-webkit-appearance:none;appearance:none;border-radius:0}
 .sb-scenario-name{font-size:12.5px;font-weight:600}
 .sb-scenario-app{font-size:11px;color:var(--dim2)}
 .sb-goal{font-size:13px;line-height:1.55;color:var(--dim);background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:10px 12px;margin-bottom:12px}
-.sb-goal-tag{font-family:"JetBrains Mono",monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:.1em;margin-right:7px}
+.sb-goal-tag{font-family:"JetBrains Mono",monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;margin-right:7px}
 .sb-jump{background:transparent;border:0;cursor:pointer;font-family:"JetBrains Mono",monospace;font-size:11px;float:right;padding:0}
 .sb-sys{background:#080b12;border:1px solid var(--line);border-radius:10px;padding:11px 12px;margin-bottom:14px}
 .sb-sys-tag{font-family:"JetBrains Mono",monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim2)}
@@ -1271,6 +1280,9 @@ input,textarea{-webkit-appearance:none;appearance:none;border-radius:0}
 .foot-ver{font-size:10.5px;color:var(--dim2);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
 .foot-by{color:var(--dim);font-size:12px}
 .foot-by b{color:var(--ink);font-weight:500}
+.foot-linkedin{display:inline-flex;align-items:center;gap:5px;text-decoration:none;color:#0a66c2;font-weight:500;vertical-align:middle;transition:.15s}
+.foot-linkedin:hover{color:#3b8fe0}
+.foot-linkedin .li-ico{flex:none}
 .foot-stats{color:var(--dim);font-size:11.5px}
 .foot-tagline{color:var(--dim);font-size:11.5px}
 .foot-links{margin:2px 0;display:flex;gap:8px;flex-wrap:wrap}
