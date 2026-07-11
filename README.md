@@ -14,6 +14,22 @@ through interactive, animated attack walkthroughs — 20 categories, 45 techniqu
 
 ---
 
+## Screenshots
+
+**Home — pick a track, then a threat**
+![THREATLAB home screen](docs/home.jpg)
+
+**Attack lab — watch a real payload travel the system**
+![Attack lab: prompt injection payload and flow, with a verified CVE](docs/attack.jpg)
+
+**Defense lab — controls to implement, and how to test them**
+![Defender view: mitigation controls plus promptfoo / Garak / PyRIT / DeepTeam test mappings](docs/defense.jpg)
+
+**Sandbox — try an attack yourself (simulated)**
+![Sandbox: vulnerable vs. guarded bot with multiple scenarios](docs/sandbox.jpg)
+
+---
+
 ## Start here
 
 New here? A good first path (about 5 minutes):
