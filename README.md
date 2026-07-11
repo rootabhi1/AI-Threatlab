@@ -9,7 +9,7 @@ THREATLAB is a single-file, dependency-free web app that teaches the
 [OWASP Agentic / Agentic Security Initiative (ASI) Top 10 (2026)](https://genai.owasp.org/initiatives/#agenticsecurity)
 through interactive, animated attack walkthroughs — 20 categories, 45 techniques, each with an attack lab and a defense lab.
 
-> **Live demo:** https://rootabhi1.github.io/AI-Threatlab/threatlab.html
+> **Live demo:** https://rootabhi1.github.io/AI-Threatlab/
 > **Offline:** download `threatlab.html` and open it in any browser — self-contained, no build, no network.
 
 ---

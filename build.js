@@ -81,4 +81,5 @@ ${compiled}
 </html>`;
 
 fs.writeFileSync(path.join(__dirname, "threatlab.html"), html);
-console.log("Built threatlab.html —", html.length, "bytes");
+fs.writeFileSync(path.join(__dirname, "index.html"), html); // clean root URL on GitHub Pages
+console.log("Built threatlab.html + index.html —", html.length, "bytes");
