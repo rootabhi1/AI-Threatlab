@@ -1,0 +1,14 @@
+{
+  "name": "threatlab-owasp",
+  "version": "1.0.0",
+  "description": "Interactive teaching tool for the OWASP LLM Top 10 (2025) and Agentic/ASI Top 10 (2026). Trace real AI attacks step by step, then watch the defenses stop them.",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/standalone": "^7.24.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
