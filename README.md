@@ -14,27 +14,6 @@ through interactive, animated attack walkthroughs — 20 categories, 45 techniqu
 
 ---
 
-## Screenshots
-
-<!--
-  TODO (add real captures — replace the lines below):
-  1. Take screenshots on your device / browser of:
-     - the home screen (3-step strip + track cards)
-     - a threat detail with the attack lab mid-animation
-     - the defense lab with a control toggled to "secure"
-  2. Save them in a docs/ folder, e.g. docs/home.png, docs/attack.png, docs/defense.png
-  3. Uncomment the lines below (and delete this note).
-  Optional: record a 10–20s screen capture, export as docs/demo.gif, and add it at the top.
--->
-
-<!-- ![THREATLAB — home](docs/home.png) -->
-<!-- ![Attack lab](docs/attack.png) -->
-<!-- ![Defense lab](docs/defense.png) -->
-
-_Screenshots coming soon — or try the [live demo](https://rootabhi1.github.io/AI-Threatlab/) now._
-
----
-
 ## Start here
 
 New here? A good first path (about 5 minutes):
