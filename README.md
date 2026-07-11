@@ -2,15 +2,15 @@
 
 **Trace real AI attacks step by step — then watch the defenses stop them.**
 
-**Created by [Abhishek Tiwari](https://linkedin.com/in/rootabhi)** · [Source on GitHub](https://github.com/rootabhi1/AI-Threatlab)
+![status](https://img.shields.io/badge/status-v1.0-38e0c8) ![license](https://img.shields.io/badge/license-MIT-blue) ![coverage](https://img.shields.io/badge/coverage-OWASP%20LLM%20%2B%20Agentic%20Top%2010-orange) ![deps](https://img.shields.io/badge/dependencies-none-brightgreen)
 
 THREATLAB is a single-file, dependency-free web app that teaches the
 [OWASP Top 10 for LLM Applications (2025)](https://genai.owasp.org/) and the
 [OWASP Agentic / Agentic Security Initiative (ASI) Top 10 (2026)](https://genai.owasp.org/initiatives/#agenticsecurity)
-through interactive, animated attack walkthroughs.
+through interactive, animated attack walkthroughs — 20 categories, 45 techniques, each with an attack lab and a defense lab.
 
 > **Live demo:** https://rootabhi1.github.io/AI-Threatlab/threatlab.html
-> **Just want to try it?** Download `threatlab.html` and open it in any browser — it's fully self-contained and works offline.
+> **Offline:** download `threatlab.html` and open it in any browser — self-contained, no build, no network.
 
 ---
 
@@ -28,16 +28,16 @@ For each of the 20 categories (10 LLM + 10 Agentic) and all 45 sub-techniques, T
 
 ---
 
-## Honesty &amp; accuracy (please read)
+## Scope &amp; fidelity
 
-This tool is built for a security audience, so it states its own limits plainly:
+THREATLAB is a teaching tool, and it's explicit about what it is and isn't:
 
-- **The labs are faithful reconstructions, not live exploits.** Nothing executes and no real system is attacked. When you "run" an attack, you're watching an accurate, animated reconstruction of how the documented attack flows — a teaching aid, not a working exploit. Free-text interaction lives only in the clearly-labelled **Sandbox**, which is a pattern-matched simulation, not a real LLM.
-- **Incidents and CVEs are verified against primary sources.** Where a real incident or CVE anchors a technique (EchoLeak / CVE-2025-32711, the Amazon Q wiper, *Mata v. Avianca*, PoisonGPT, the PyTorch `torchtriton` dependency compromise, Unit 42's model-namespace-reuse research, and others), it is cited and was checked against the original disclosure.
-- **Agentic entries are labelled as documented patterns** where no single CVE exists — which is the honest state of the public record for many agentic attacks.
-- **Secure configs are real controls.** The verified production configs cite their source (MDN, promptfoo docs, AWS IAM grammar, nginx docs). Treat them as patterns to **adapt to your environment**, not lines to paste blindly — pasting security config without understanding it is itself an anti-pattern.
+- **Reconstructions, not live exploits.** The attack and defense labs are accurate, animated reconstructions of how each documented technique flows through a system. Nothing executes, and no live model or system is targeted — the value is in seeing the mechanics and the mitigations, not in running working exploits. Free-text input is confined to the **Sandbox**, which is a pattern-matched simulation, clearly labelled as such (not a real LLM).
+- **Incidents and CVEs cite primary sources.** Where a technique is anchored to a real event, it names it and was checked against the original disclosure — e.g. EchoLeak (CVE-2025-32711), the Amazon Q wiper, *Mata v. Avianca*, PoisonGPT, the PyTorch `torchtriton` dependency compromise, and Unit 42's model-namespace-reuse research.
+- **Documented patterns are labelled as such.** Many agentic attacks have no single CVE; those entries are marked as documented patterns rather than dressed up as vulnerabilities — reflecting the actual state of the public record.
+- **Configs are real controls, cited.** The verified production configs reference their source (MDN, promptfoo, AWS IAM grammar, nginx). They're starting points to adapt to your environment — not drop-in fixes. Applying security config without understanding it is its own failure mode.
 
-If you find an inaccuracy, please [open an issue](../../issues) — corrections are welcome and appreciated.
+Spotted something inaccurate? [Open an issue](https://github.com/rootabhi1/AI-Threatlab/issues/new) — corrections are welcome.
 
 ---
 
@@ -90,3 +90,7 @@ The app is plain React (no build framework), pre-compiled to a single HTML file 
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Accuracy corrections, new attack flows, and additional verified configs are especially welcome.
+
+## Author
+
+Built and maintained by **Abhishek Tiwari** — [LinkedIn](https://linkedin.com/in/rootabhi) · [GitHub](https://github.com/rootabhi1)
