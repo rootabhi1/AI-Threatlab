@@ -18,22 +18,22 @@ const data = read("data.js")
   .replace(/export const CHAINS =/, "const CHAINS =")
   .replace(/export const SANDBOX =/, "const SANDBOX_UNUSED =");
 const sandbox = read("sandbox.js").replace(/export const SANDBOX =/, "const SANDBOX =");
-const ix   = read("interactive_batch1.js").replace(/export const IX =/, "const IX =");
-const ix1b = read("interactive_batch1b.js").replace(/export const IX1B =/, "const IX1B =");
-const ix2  = read("interactive_batch2.js").replace(/export const IX2 =/, "const IX2 =");
-const ix3a = read("interactive_batch3a.js").replace(/export const IX3A =/, "const IX3A =");
-const ix3b = read("interactive_batch3b.js").replace(/export const IX3B =/, "const IX3B =");
+const ix   = read("interactive_llm01.js").replace(/export const IX =/, "const IX =");
+const ix1b = read("interactive_llm02-05.js").replace(/export const IX1B =/, "const IX1B =");
+const ix2  = read("interactive_llm06-10.js").replace(/export const IX2 =/, "const IX2 =");
+const ix3a = read("interactive_asi01-05.js").replace(/export const IX3A =/, "const IX3A =");
+const ix3b = read("interactive_asi06-10.js").replace(/export const IX3B =/, "const IX3B =");
 const rc   = read("realconfig.js").replace(/export const REALCONFIG =/, "const REALCONFIG =");
 
 let app = read("app-src.jsx")
   .replace(/import React[^;]*;\n/, "")
   .replace(/import \{ DATA, QUIZ, CHAINS \} from "\.\/data\.js";\n/, "")
   .replace(/import \{ SANDBOX \} from "\.\/sandbox\.js";\n/, "")
-  .replace(/import \{ IX \} from "\.\/interactive_batch1\.js";\n/, "")
-  .replace(/import \{ IX1B \} from "\.\/interactive_batch1b\.js";\n/, "")
-  .replace(/import \{ IX2 \} from "\.\/interactive_batch2\.js";\n/, "")
-  .replace(/import \{ IX3A \} from "\.\/interactive_batch3a\.js";\n/, "")
-  .replace(/import \{ IX3B \} from "\.\/interactive_batch3b\.js";\n/, "")
+  .replace(/import \{ IX \} from "\.\/interactive_llm01\.js";\n/, "")
+  .replace(/import \{ IX1B \} from "\.\/interactive_llm02-05\.js";\n/, "")
+  .replace(/import \{ IX2 \} from "\.\/interactive_llm06-10\.js";\n/, "")
+  .replace(/import \{ IX3A \} from "\.\/interactive_asi01-05\.js";\n/, "")
+  .replace(/import \{ IX3B \} from "\.\/interactive_asi06-10\.js";\n/, "")
   .replace(/import \{ REALCONFIG \} from "\.\/realconfig\.js";\n/, "")
   .replace(/export default function App/, "function App");
 

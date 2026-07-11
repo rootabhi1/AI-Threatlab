@@ -1,4 +1,4 @@
-/* interactive_batch2.js — real-artifact theater data for LLM06–LLM10.
+/* interactive_llm06-10.js — real-artifact theater data for LLM06–LLM10.
    Same shape as batch 1. Accuracy: real techniques; configs are real controls
    or honest technique-level where no single product setting applies. */
 

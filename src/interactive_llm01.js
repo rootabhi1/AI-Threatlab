@@ -1,4 +1,4 @@
-/* interactive_batch1.js — real-artifact theater data for LLM01.
+/* interactive_llm01.js — real-artifact theater data for LLM01.
    Keyed by category id -> sub name. Each sub provides:
      artifact: { kind, from?, subj?, visible?, hidden?, lines?[] }  (the real payload as an artifact)
      reactions: { <nodeKey>: { t, art } }   (real reaction shown when the packet reaches that node)

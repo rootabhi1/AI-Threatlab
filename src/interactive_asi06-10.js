@@ -1,4 +1,4 @@
-/* interactive_batch3b.js — real-artifact theater data for ASI06–ASI10. */
+/* interactive_asi06-10.js — real-artifact theater data for ASI06–ASI10. */
 
 export const IX3B = {
   ASI06: {

@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { DATA, QUIZ, CHAINS } from "./data.js";
 import { SANDBOX } from "./sandbox.js";
-import { IX } from "./interactive_batch1.js";
-import { IX1B } from "./interactive_batch1b.js";
-import { IX2 } from "./interactive_batch2.js";
-import { IX3A } from "./interactive_batch3a.js";
-import { IX3B } from "./interactive_batch3b.js";
+import { IX } from "./interactive_llm01.js";
+import { IX1B } from "./interactive_llm02-05.js";
+import { IX2 } from "./interactive_llm06-10.js";
+import { IX3A } from "./interactive_asi01-05.js";
+import { IX3B } from "./interactive_asi06-10.js";
 import { REALCONFIG } from "./realconfig.js";
 
 /* ---------- icons ---------- */

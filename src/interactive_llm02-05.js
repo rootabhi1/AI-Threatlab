@@ -1,4 +1,4 @@
-/* interactive_batch1b.js — fills the gap: LLM02–LLM05 (found by sanity sweep).
+/* interactive_llm02-05.js — fills the gap: LLM02–LLM05 (found by sanity sweep).
    Same shape/discipline as the other batches. */
 
 export const IX1B = {

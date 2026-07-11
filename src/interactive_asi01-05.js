@@ -1,4 +1,4 @@
-/* interactive_batch3a.js — real-artifact theater data for ASI01–ASI05.
+/* interactive_asi01-05.js — real-artifact theater data for ASI01–ASI05.
    Agentic artifacts: calendar invites, tool registries/descriptions, credentials,
    runtime components, code/tickets. Accuracy: real techniques; configs at accurate
    control level; incidents labeled as documented patterns where no single CVE exists. */

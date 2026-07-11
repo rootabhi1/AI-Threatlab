@@ -80,11 +80,11 @@ src/
   data.js                 # all 20 categories, 45 sub-techniques, quiz, chains
   app-src.jsx             # the React app (UI, theater, chain view, sandbox, quiz)
   sandbox.js              # the 4 hands-on sandbox scenarios
-  interactive_batch1.js   # attack artifacts + reactions + config pairs: LLM01
-  interactive_batch1b.js  #   LLM02–LLM05
-  interactive_batch2.js   #   LLM06–LLM10
-  interactive_batch3a.js  #   ASI01–ASI05
-  interactive_batch3b.js  #   ASI06–ASI10
+  interactive_llm01.js       # attack artifacts + reactions + config pairs: LLM01
+  interactive_llm02-05.js    #   LLM02–LLM05
+  interactive_llm06-10.js    #   LLM06–LLM10
+  interactive_asi01-05.js    #   ASI01–ASI05
+  interactive_asi06-10.js    #   ASI06–ASI10
   realconfig.js           # verified, source-cited production configs (marquee cases)
 ```
 
